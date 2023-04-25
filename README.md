@@ -19,9 +19,9 @@
 
 Get started by installing `mock-cors-proxy` globally using npm:
 
-\`\`\`bash
+```bash
 npm install -g mock-cors-proxy
-\`\`\`
+```
 
 ## Usage 🎮
 
