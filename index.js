@@ -15,11 +15,12 @@ const argv = minimist(process.argv.slice(2));
 const TARGET_URL = argv.targetUrl
 const PORT = parseInt(argv.port, 10) || 6001;
 const MODE = (argv.mode && argv.mode.toLowerCase()) || 'mix';
+const CACHE_DIR = argv.mockDir || './cache';
 
 
 if (!argv.targetUrl) {
   console.log(chalk.red('No target URL specified.'))
-  console.log(chalk.red('Usage: node index.js --targetUrl <target_url> --port <port> --mode <mode>'));
+  console.log(chalk.red('Usage: node index.js --targetUrl <target_url> --port <port> --mode <mode> --mockDir <directory>'));
   console.log('\n' + chalk.green('Modes:'));
   console.log('  ' + chalk.blue('capture-only') + ': Only caches requests to the file system but does not read from them.');
   console.log('  ' + chalk.blue('proxy-only') + ': Only hits the target URL and does not use caching.');
@@ -36,7 +37,6 @@ if (!['capture-only', 'proxy-only', 'mix'].includes(MODE)) {
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Parse JSON request bodies
 
-const CACHE_DIR = './cache';
 
 if (MODE !== 'proxy-only') {
   // Create cache directory if it doesn't exist

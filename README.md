@@ -28,10 +28,16 @@ npm install -g mock-cors-proxy
 Start the `mock-cors-proxy` server with this command:
 
 ```bash
-mock-cors-proxy --targetUrl <target_url> --port <port> --mode <mode>
+mock-cors-proxy --targetUrl <target_url> --port <port> --mode <mode> --mockDir <directory>
 ```
 
-Replace `<target_url>`, `<port>`, and `<mode>` with your desired values. If no target URL or port is specified, the server will use the default target URL (`http://localhost:6001`) and port (`6001`).
+Replace `<target_url>`, `<port>`, `<mode>`, and `<mockDir>` with your desired values. 
+
+**Defaults:**
+
+* port: `6001`
+* mockDir: `./cache`
+* mode: `mix`
 
 Modes:
 
@@ -42,7 +48,7 @@ Modes:
 For example:
 
 ```bash
-mock-cors-proxy --targetUrl https://api.example.com --port 3000 --mode mix
+mock-cors-proxy --targetUrl https://api.example.com --port 3000 --mode mix --mockDir <mockDir>
 ```
 
 This command starts the `mock-cors-proxy` server, proxying requests to `https://api.example.com` and listening on port `3000`, with both caching and proxying enabled.
